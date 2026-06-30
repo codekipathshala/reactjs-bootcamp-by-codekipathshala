@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React JS : Phase 1 </title>
+</head>
+
+<body>
+    <h1>React JS : Phase 1</h1>
+
+
+
+    <script>
+
+        let a = 11;
+        let b = 12;
+
+        let sum = a + b;
+        console.log(sum);
+
+
+        let d = 22;
+        let e = 10;
+
+        let sum2 = d + e;
+        console.log(sum2);
+
+        // DRY : Don't Repeat Yourself
+
+        function add() {
+            console.log("I am function");
+        };
+
+
+        add();
+
+
+        let addTwoNumbers = (a, b = 0) => {
+            console.log(`the sum of ${a} and ${b} is ${a + b}`);
+        };
+
+
+        addTwoNumbers(12, 10);
+        addTwoNumbers(12);
+
+
+        // Object 
+
+        let chacha = {
+            name: "John",
+            age: 300
+        };
+        console.log(chacha)
+        console.log(chacha["name"])
+        console.log(chacha.age);
+
+        chacha.canFly = false;
+        console.log(chacha)
+
+        delete chacha.canFly;
+        console.log(chacha);
+
+
+        let arr = [1, 2, 3, 4, "a", "b", "c", true, false, function () { }, {}];
+        console.log(arr[4]);
+
+
+        let arr2 = [];
+
+        arr2.push(1);
+        arr2.push(2);
+        console.log(arr2);
+        arr2.pop();
+        console.log(arr2);
+
+        arr2.unshift(11);
+        console.log(arr2);
+
+        arr2.shift();
+        console.log(arr2)
+
+
+        let human = {
+            name: 'Abhishek',
+            age: 24,
+            canCode: true,
+            canFly: false
+        };
+
+        let { name, canCode } = human;
+        console.log(name, canCode);
+
+        let newArr = [1, 2, 3, 4];
+        let [q, w, y, r] = newArr;
+        console.log(q)
+
+        // let human2 = human;
+
+
+        let human2 = { ...human }
+
+        console.log(human2);
+        human2.name = 'aman';
+        console.log(human2);
+        console.log(human);
+
+        let arrr = [1, 2, 3, 4];
+        let arrr2 = [...arrr];
+
+        arrr2.pop();
+        console.log(arrr);
+        console.log(arrr2);
+
+
+        arrr.forEach(function (val, idx, arr) {
+            console.log(val, idx, arr);
+        });
+
+
+
+        let mappedArr = arrr.map(function (val, idx, arr) {
+            return val * 2
+        });
+        console.log(mappedArr);
+        console.log(arrr);
+
+
+
+        let filteredArr = arrr.filter(function (val, idx, arr) {
+            return val > 2
+        });
+
+        console.log(filteredArr);
+
+
+        let findedArr = arrr.find(function (val, idx, arr) {
+            return val > 2;
+        });
+
+        console.log(findedArr);
+
+
+        let promise = new Promise(function (res, rej) {
+            rej("This is rejected")
+        });
+
+        promise.then(function (val) {
+            console.log(val);
+        }).catch(function (err) {
+            console.log(err);
+        })
+
+
+        let data = fetch('https://dummyjson.com/users').then(function (val) {
+            return val.json()
+        })
+            .then(function (val) {
+                console.log(val);
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
+        // console.log(data);
+
+
+        async function getData() {
+            let res = await fetch('https://dummyjson.com/users');
+            let user = await res.json();
+            console.log(user.users)
+        }
+
+
+        getData();
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
