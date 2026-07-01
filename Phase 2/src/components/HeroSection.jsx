@@ -1,7 +1,19 @@
+import { useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
 
 function HeroSection() {
+  
+  let [input,setInput] = useState(null);
+  let [email,setEmail] = useState(null);
+
+  let [data,setData] = useState({
+    name : '',
+    email : '',
+    password : ''
+  })
+
+
   function handleProjects() {
     alert("Btn Clicked - EXPLORE PROJECTS");
   }
@@ -11,13 +23,28 @@ function HeroSection() {
   }
 
   function handleInput(e) {
-    console.log(e.target.value);
+    let name= e.target.name;
+    let value = e.target.value;
+    // console.log({...data,[name]})
+    setData({...data,[name]:value})
   }
 
   function handleSubmit(e){
     e.preventDefault();
-    alert("Form submitted")
+    // alert("Form submitted")
 
+    // let formData = {
+    //   name : input,
+    //   email,
+    // }
+    console.log(data)
+
+  }
+
+
+  function anotherInputHandler(e){
+    console.log("another input",e.target.value);
+    setInput(e.target.value)
   }
 
   return (
@@ -37,20 +64,24 @@ function HeroSection() {
           handleClick={handleContact}
         />
       </div>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <Input
           handleChange={handleInput}
           varient={"primary"}
           placeholder={"Enter your name"}
+          label={"name"}
+          value={data.name}
         />
         <Input
           handleChange={handleInput}
           varient={"outline"}
           placeholder={"Enter your email"}
           label={"email"}
+          value={data.email}
         />
+        <input className='m-32' name='password' value={data.password} onChange={handleInput} type="text" placeholder="this is another input feild" />
         <button type='submit'>Submit</button>
-      </form>
+      </form> */}
     </section>
   );
 }
